@@ -71,6 +71,7 @@ require("which-key").add({
 	{ "<leader>d", group = "+[D]ebuging" },
 	{ "<leader>m", group = "+[M]akefiles" },
 	{ "<leader>g", group = "+[G]it" },
+	{ "<leader>a", group = "+[A]i" },
 })
 
 -- set makefile keymaps

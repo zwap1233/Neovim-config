@@ -1,0 +1,64 @@
+---@module 'lazy'
+---@type LazySpec
+return {
+	"carlos-algms/agentic.nvim",
+
+	--- @type agentic.PartialUserConfig
+	opts = {
+		-- Any ACP-compatible provider works. Built-in: "claude-agent-acp" | "gemini-acp" | "codex-acp" | "opencode-acp" | "cursor-acp" | "copilot-acp" | "auggie-acp" | "mistral-vibe-acp" | "cline-acp" | "goose-acp"
+		provider = "opencode-acp", -- setting the name here is all you need to get started
+	},
+
+	-- these are just suggested keymaps; customize as desired
+	keys = {
+		{
+			"<leader>ac",
+			function()
+				require("agentic").toggle()
+			end,
+			mode = { "n", "v" },
+			desc = "Toggle Agentic [C]hat",
+		},
+		{
+			"<leader>aa",
+			function()
+				require("agentic").add_selection_or_file_to_context()
+			end,
+			mode = { "n", "v" },
+			desc = "[A]dd file or selection to Agentic to Context",
+		},
+		{
+			"<leader>as",
+			function()
+				require("agentic").new_session()
+			end,
+			mode = { "n", "v" },
+			desc = "New Agentic [S]ession",
+		},
+		{
+			"<leader>ar", -- ai Restore
+			function()
+				require("agentic").restore_session()
+			end,
+			desc = "Agentic [R]estore session",
+			silent = true,
+			mode = { "n", "v" },
+		},
+		{
+			"<leader>ad", -- ai Diagnostics
+			function()
+				require("agentic").add_current_line_diagnostics()
+			end,
+			desc = "Add current line [d]iagnostic to Agentic",
+			mode = { "n" },
+		},
+		{
+			"<leader>aD", -- ai all Diagnostics
+			function()
+				require("agentic").add_buffer_diagnostics()
+			end,
+			desc = "Add all buffer [d]iagnostics to Agentic",
+			mode = { "n" },
+		},
+	},
+}
