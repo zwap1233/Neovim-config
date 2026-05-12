@@ -46,6 +46,7 @@ require("lazy").setup({
 
 	require("wouter.plugins.debug"),
 
+	require("wouter.plugins.snippets"),
 	-- NOTE: For more info
 	--
 	-- For additional information with loading, sourcing and examples see `:help lazy.nvim-🔌-plugin-spec`
