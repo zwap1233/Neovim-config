@@ -21,6 +21,8 @@ return {
 				"query",
 				"vim",
 				"vimdoc",
+				"nix",
+				"rust",
 			}
 			require("nvim-treesitter").install(parsers)
 			vim.api.nvim_create_autocmd("FileType", {
