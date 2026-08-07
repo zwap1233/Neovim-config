@@ -1,3 +1,5 @@
+-- NOTE: This file configures agentic.nvim
+
 ---@module 'lazy'
 ---@type LazySpec
 return {

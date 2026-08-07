@@ -1,3 +1,5 @@
+-- NOTE: debugging for c++
+
 ---@module 'lazy'
 ---@type lazyspec
 return {

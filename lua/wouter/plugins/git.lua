@@ -1,3 +1,5 @@
+-- NOTE: Setup neogit.nvim, diffview.nvim and gitsigns.nvim
+
 ---@module 'lazy'
 ---@type LazySpec
 return {

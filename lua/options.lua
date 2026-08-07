@@ -1,29 +1,25 @@
--- [[ Setting options ]]
--- See `:help vim.o`
--- NOTE: You can change these options as you wish!
---  For more options, you can see `:help option-list`
+-- NOTE: general options for neovim
 
--- Make line numbers default
+-- Show line numbers
 vim.o.number = true
--- You can also add relative line numbers, to help with jumping.
---  Experiment for yourself to see if you like it!
+-- The line numbers are relative
 vim.o.relativenumber = true
 
--- Enable mouse mode, can be useful for resizing splits for example!
+-- see :help mouse
 vim.o.mouse = "a"
 
--- Don't show the mode, since it's already in the status line
+-- This shows the mode in the bottom bar where you type the commands. It is redundant.
 vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
+-- vim.schedule(function()
+-- vim.o.clipboard = "unnamedplus"
+-- end)
 
--- Enable break indent
+-- Enable break indent if line is wraped around due to the width of the screen.
 vim.o.breakindent = true
 
 -- Enable undo/redo changes even after closing and reopening a file
@@ -36,7 +32,7 @@ vim.o.smartcase = true
 -- Keep signcolumn on by default
 vim.o.signcolumn = "yes"
 
--- Decrease update time
+-- Decrease update time, this describes how often you write to the swap file
 vim.o.updatetime = 250
 
 -- Decrease mapped sequence wait time
@@ -60,7 +56,7 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- Preview substitutions live, as you type!
 vim.o.inccommand = "split"
 
--- Show which line your cursor is on
+-- Show which line your cursor is on, this is the tiny screen that displays suggestions
 vim.o.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
@@ -79,18 +75,24 @@ vim.o.shiftwidth = 4
 vim.o.autoindent = false
 vim.o.smartindent = true
 
--- use spaces instead of tabs
-vim.o.expandtab = true
-vim.o.softtabstop = 4
 
--- Setting the filetype for Verilog
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "*.v" },
-	command = "set filetype=verilog",
-})
+-- share the clipboard with the os
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
--- Setting the filetype for SystemVerilog
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
-	pattern = { "*.sv" },
-	command = "set filetype=systemverilog",
+-- Diagnostic Config & Keymaps
+-- See :help vim.diagnostic.Opts
+vim.diagnostic.config({
+	update_in_insert = false,
+	severity_sort = true,
+	float = { border = "rounded", source = "if_many" },
+	underline = { severity = { min = vim.diagnostic.severity.WARN } },
+
+	-- Can switch between these as you prefer
+	virtual_text = true, -- Text shows up at the end of the line
+	virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+
+	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
+	jump = { float = true },
 })
