@@ -70,16 +70,23 @@ vim.o.confirm = true
 -- set the visual width of a tab to 4 spaces
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
+-- vim.o.expandtab = true
 
 -- auto indent when on a new line
 vim.o.autoindent = false
 vim.o.smartindent = true
 
-
 -- share the clipboard with the os
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "verilog", "systemverilog" },
+	callback = function()
+		vim.o.expandtab = true
+	end,
+})
 
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
@@ -90,8 +97,8 @@ vim.diagnostic.config({
 	underline = { severity = { min = vim.diagnostic.severity.WARN } },
 
 	-- Can switch between these as you prefer
-	virtual_text = true, -- Text shows up at the end of the line
-	virtual_lines = false, -- Text shows up underneath the line, with virtual lines
+	virtual_text = false, -- Text shows up at the end of the line
+	virtual_lines = true, -- Text shows up underneath the line, with virtual lines
 
 	-- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
 	jump = { float = true },

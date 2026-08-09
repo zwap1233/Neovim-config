@@ -29,7 +29,7 @@ return {
 			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
 			--    function will be executed to configure the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+				group = vim.api.nvim_create_augroup("wouter-lsp-attach", { clear = true }),
 				callback = function(event)
 					-- NOTE: Remember that Lua is a real programming language, and as such it is possible
 					-- to define small helper and utility functions so you don't have to repeat yourself.
@@ -108,7 +108,7 @@ return {
 			local servers = {
 				clangd = {},
 				rust_analyzer = {},
-				verible = {}, -- for formating and simple linting of verilog
+				verible = { cmd = { "verible-verilog-ls", "--rules_config_search", "--indentation_spaces", "4" } }, -- for formating and simple linting of verilog
 				stylua = {}, -- Used to format Lua code
 
 				-- Special Lua Config, as recommended by neovim help docs

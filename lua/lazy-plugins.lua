@@ -7,10 +7,14 @@ require("lazy").setup({
 	require("wouter.plugins.git"),
 	require("wouter.plugins.ai"),
 	require("wouter.plugins.debug"),
+	require("wouter.plugins.local-config"),
 
 	require("wouter.plugins.telescope"),
+
 	require("wouter.plugins.lspconfig"),
 	require("wouter.plugins.treesitter"),
+	-- require("wouter.plugins.conform"),
+	require("wouter.plugins.linter"),
 
 	require("wouter.plugins.todo-comments"), -- note and todo comments
 	require("wouter.plugins.mini"),
