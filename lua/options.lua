@@ -84,7 +84,7 @@ end)
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "verilog", "systemverilog" },
 	callback = function()
-		vim.o.expandtab = true
+		vim.opt_local.expandtab = true
 	end,
 })
 
