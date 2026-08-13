@@ -7,6 +7,8 @@ return {
 			-- better around and inside text object
 			require("mini.ai").setup({ n_lines = 500 })
 
+			require("mini.snippets").setup()
+
 			-- Add/delete/replace surrounding a text object
 			require("mini.surround").setup()
 
@@ -25,7 +27,6 @@ return {
 			statusline.section_location = function()
 				return "%2l:%-2v"
 			end
-
-		end
-	}
+		end,
+	},
 }
